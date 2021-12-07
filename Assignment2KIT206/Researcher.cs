@@ -56,11 +56,6 @@ namespace Assignment2KIT206
             return ((CurrentJobStart() - EarliestStart()).Days) / daysInYear;
         }
 
-        public int PublicationsCount()
-        {
-
-        }
-
         //Testing method
         public void DisplayPositions()
         {
