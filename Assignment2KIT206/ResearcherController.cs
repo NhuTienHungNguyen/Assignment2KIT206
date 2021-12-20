@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Assignment2KIT206
 {
-
     namespace Controller
     {
         using Adapter;
