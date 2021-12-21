@@ -1,0 +1,171 @@
+﻿<Window x:Class="NewAssignment2KIT206.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NewAssignment2KIT206"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="680" Width="1010">
+    <Grid Margin="0, 0, 4, -1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="147*"/>
+            <ColumnDefinition Width="463*"/>
+            <ColumnDefinition Width="320*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="researcherList" Margin="0,95,0,10"
+			ItemsSource="{Binding Source={StaticResource researcherList}}" SelectionChanged="researcherList_SelectionChanged" Grid.ColumnSpan="2"/>
+        <StackPanel x:Name="FilterByName" Orientation="Vertical" Grid.Column="0" Height="40" Margin="0, 0, 1, 0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="198" Grid.ColumnSpan="2">
+            <TextBox x:Name="researcherFilterTextBox" HorizontalAlignment="Right" Height="23" Margin="0,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="88" TextChanged="researcherFilterTextBox_TextChanged"  />
+            <Label Content="Filter by Name:" Margin="10,-25,48,0" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        </StackPanel>
+        <local:FilteringByLevelControl x:Name="ResearcherCombobox" Height="49" Margin="10,41,19,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <StackPanel x:Name="DetailsPanel" Orientation="Vertical" Grid.Column="2" Height="651" VerticalAlignment="Top" Margin="0,0,1,0">
+            <StackPanel Orientation="Horizontal" Margin="18,0,199,0">
+                <Label Content="Name:"/>
+                <Label Content="{Binding FullName}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="18,0,199,0">
+                <Label Content="Title:"/>
+                <Label Content="{Binding Title}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="18,0,199,0">
+                <Label Content="Unit:"/>
+                <Label Content="{Binding Unit}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="18,0,199,0">
+                <Label Content="Campus:"/>
+                <Label Content="{Binding Campus}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="18,0,199,0">
+                <Label Content="Email:"/>
+                <Label Content="{Binding Email}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="350,-120,0,0" Width="90">
+                <Image Height="141" Margin="0,0,0,0" Source="{Binding Path=Photo}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="18,0,199,0">
+                <Label Content="Current Job:"/>
+                <Label Content="{Binding GetCurrentJob}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="18,0,0,0">
+                <Label Content="Commenced with Institution: "/>
+                <Label Content="{Binding EarliestJobStart}" ContentStringFormat=" {0:dd/MM/yyyy}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="18,0,0,0">
+                <Label Content="Commenced with Current Position: "/>
+                <Label Content="{Binding CurrentJobStart}" ContentStringFormat=" {0:dd/MM/yyyy}"/>
+            </StackPanel>
+            <Label Content="Previous positions: " Margin="18,0,0,0" />
+            <ListBox Height="35" ItemsSource="{Binding EarlierJobs}" Margin="18,0,0,0" />
+            <StackPanel Orientation="Horizontal" Margin="18,0,0,0" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Label Content="Tenure:"/>
+                <Label Content="{Binding Tenure}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="18,0,123,0" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Label Content="Publications:"/>
+                <Label Content="{Binding PublicationCount}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="270,-55,15,0" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Label Content="3-year average:" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                <Label Content="{Binding threeYearAverage}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="270,-30,0,0" Width="200" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Label Content="Performance:"/>
+                <Label Content="{Binding getPerformance}" ContentStringFormat=" {0:#0.00'%'}" />
+            </StackPanel>
+            <Expander x:Name="Showpublication" Margin="18,0,15,0" Header="Show Commulative" ExpandDirection="Down">
+                <StackPanel Orientation="Horizontal" Margin="18,0,8,0">
+                    <Label Content="Publication Commulative: "/>
+                    <ListBox Height="80" ItemsSource="{Binding displayCommulativePublicationCount}" Margin="18,0,0,0" Width="240" />
+                </StackPanel>
+            </Expander>
+            <StackPanel Orientation="Horizontal" Margin="18,0,123,0">
+                <Label Content="Supervisions:"/>
+                <Label Content="{Binding SupervisionCount}"/>
+            </StackPanel>
+            <Expander x:Name="Showsupervision" Margin="18,0,15,0" Header="Show Supervision" ExpandDirection="Down">
+                <StackPanel Orientation="Horizontal" Margin="18,0,8,0">
+                    <Label Content="Supervisions List: "/>
+                    <ListBox Height="42" ItemsSource="{Binding Supervision}" Margin="18,0,0,0" Width="250" />
+                </StackPanel>
+            </Expander>
+            <StackPanel Orientation="Horizontal" Margin="18,0,0,0">
+                <Label Content="Degree:"/>
+                <Label Content="{Binding Degree}"/>
+            </StackPanel>
+            <Label Content="Publications list:" Margin="18,0,0,0"/>
+            <Label Content="Order List: " Margin="18,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+            <ComboBox x:Name="Ordering" Margin="18,0,0,0" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" ItemsSource="{Binding orderingItems}" SelectionChanged="Ordering_SelectionChanged"  />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Width="250" Margin="200,-45,0,0">
+                <Label Content="From"/>
+                <TextBox x:Name="LowerLimit" Height="23" TextWrapping="Wrap" Text=""  Width="70" Margin="0, 0 ,0 ,0" TextChanged="LowerLimit_TextChanged" />
+                <Label Content="To" Margin="20, 0, 0, 0" />
+                <TextBox x:Name="UpperLimit" Height="23" TextWrapping="Wrap" Text=""  Width="70" Margin="20, 0 ,0 ,0" TextChanged="UpperLimit_TextChanged"  />
+            </StackPanel>
+            <ListBox x:Name="PublicationList" Height="131" ItemsSource="{Binding Publications}" Margin="18,0,15,0" SelectionChanged="PublicationList_SelectionChanged" />
+        </StackPanel>
+        <StackPanel x:Name="ReportPanel" Orientation="Vertical" Grid.Column="3" Height="651" VerticalAlignment="Top" Margin="0,0,1,0">
+            <Expander x:Name="ShowReport" Margin="18,0,15,0" Header="Show Researcher Report" ExpandDirection="Down">
+                <StackPanel>
+                    <Label Content="Star Performers" Margin="20,0,0,0" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                    <DataGrid x:Name="StarPerformers"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True" Margin="35,0,55,0" Loaded="StarPerformers_Loaded"
+                      >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Performance"
+                                        Width="100"
+                                        Binding="{Binding Path=getPerformance}"/>
+                            <DataGridTextColumn Header="Full name"
+                                        Width="250"
+                                        Binding="{Binding Path=FullName}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Label Content="Meeting Minimum" Margin="20,0,0,0" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <DataGrid x:Name="MeetMinimum"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True" Margin="35,0,55,0" Loaded="MeetMinimum_Loaded" 
+                      >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Performance"
+                                        Width="100"
+                                        Binding="{Binding Path=getPerformance}"/>
+                            <DataGridTextColumn Header="Full name"
+                                        Width="250"
+                                        Binding="{Binding Path=FullName}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Label Content="Below Expectations" Margin="20,0,0,0" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <DataGrid x:Name="BelowExp"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True" Margin="35,0,55,0" Loaded="BelowExp_Loaded" 
+                      >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Performance"
+                                        Width="100"
+                                        Binding="{Binding Path=getPerformance}"/>
+                            <DataGridTextColumn Header="Full name"
+                                        Width="250"
+                                        Binding="{Binding Path=FullName}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Label Content="Poor" Margin="20,0,0,0" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                    <DataGrid x:Name="Poor"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True" Margin="35,0,55,0" Loaded="Poor_Loaded"
+                      >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Performance"
+                                        Width="100"
+                                        Binding="{Binding Path=getPerformance}"/>
+                            <DataGridTextColumn Header="Full name"
+                                        Width="250"
+                                        Binding="{Binding Path=FullName}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </Expander>
+        </StackPanel>
+    </Grid>
+</Window>

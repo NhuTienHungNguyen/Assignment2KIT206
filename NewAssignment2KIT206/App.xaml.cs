@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Assignment2
+namespace NewAssignment2KIT206
 {
     /// <summary>
     /// Interaction logic for App.xaml
