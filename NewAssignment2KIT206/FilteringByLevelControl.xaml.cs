@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 
 namespace NewAssignment2KIT206
 {
+    using Researchers;
+    using Controllers;
     /// <summary>
     /// Interaction logic for FilteringByLevelControl.xaml
     /// </summary>

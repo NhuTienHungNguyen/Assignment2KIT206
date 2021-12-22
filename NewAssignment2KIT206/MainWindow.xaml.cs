@@ -14,8 +14,11 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 
+
 namespace NewAssignment2KIT206
 {
+    using Controllers;
+    using Researchers;
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
