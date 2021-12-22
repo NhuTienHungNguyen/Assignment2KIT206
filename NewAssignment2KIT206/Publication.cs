@@ -8,8 +8,7 @@ namespace NewAssignment2KIT206
 {
     namespace Researchers
     {
-        //In this fictitious example these are the 'modes' in which training can occur,
-        //but you may recognise them as something else related to the assignment
+        //Enum type for publication type
         public enum Type { Conference, Journal, Other };
 
         /// <summary>
@@ -18,35 +17,26 @@ namespace NewAssignment2KIT206
         /// </summary>
         public class Publication
         {
-            public string DOI { get; set; }
-            public string Title { get; set; }
-            public string Authors { get; set; }
-            public int Year { get; set; }
-            public Type Mode { get; set; }
-            public string Cite_as { get; set; }
-            public DateTime Available { get; set; }
+            public string DOI { get; set; }                 //Publication DOI
+            public string Title { get; set; }               //Publication Title
+            public string Authors { get; set; }             //Publication Author(s)
+            public int Year { get; set; }                   //Publication available Year
+            public Type Mode { get; set; }                  //Publication type
+            public string Cite_as { get; set; }             //Publication cite as string
+            public DateTime Available { get; set; }         //Publication available date
 
-            public int Age
+            public int Age                                  //Age of Publication until now
             {
-                //DateTime.Today returns today's date. As DateTime objects overload the
-                //addition and subtraction operators we can use them to determine the
-                //elapsed time between today's date and the Completed date. However, 
-                //the result is not a number but a TimeSpan object, whose Days
-                //property gives the number of whole days represented by the TimeSpan.
                 get { return (DateTime.Today - Available).Days; }
             }
 
+            //ToString method to display publication
             public override string ToString()
             {
-                //This is a straightforward way of constructing the string using DateTime's
-                //ToShortDateString method to remove the time component of the complted date
                 return Title + " completed by " + Mode + " on " + Available.ToShortDateString();
-
-                //This alternative approach uses the Format method of string, with the
-                //short date format requested via the :d in the format string
-                //return string.Format("{0} completed by {1} on {2:d}", Title, Mode, Certified);
             }
 
+            //String method to display details of a publication
             public string ToDetailedString()
             {
                 return String.Format("DOI: {0} \n" +

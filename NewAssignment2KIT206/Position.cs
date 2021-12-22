@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace NewAssignment2KIT206
 {
-    //public enum EmploymentLevel { Any, Student, A, B, C, D, E };
     using Controllers;
 
     namespace Researchers
@@ -14,18 +13,15 @@ namespace NewAssignment2KIT206
 
         public class Position
         {
-            /// <summary> 
-            /// A training session undertaken by an employee on a particular date.
-            /// Created in task 1.2 of the Week 9 tutorial.
-            /// </summary>
-            public int ID { get; set; }
-            public EmploymentLevel Level { get; set; }
-            public DateTime Start { get; set; }
-            public DateTime End { get; set; }
+            public int ID { get; set; }                         //ID of researcher
+            public EmploymentLevel Level { get; set; }          //Employment level of the following position
+            public DateTime Start { get; set; }                 //Start day of the position
+            public DateTime End { get; set; }                   //End day of the position (if available)
 
+            //To title of the position
             public string ToTitle(EmploymentLevel e)
             {
-                string title;
+                string title;                                   //The title of the researcher
                 switch (e)
                 {
                     case EmploymentLevel.Student:
@@ -51,11 +47,12 @@ namespace NewAssignment2KIT206
                 return title;
             }
 
+            //ToString method for the position
             public override string ToString()
             {
-                string start = Start.ToString("dd-MM-yyyy");
-                string end;
-                string title = ToTitle(Level);
+                string start = Start.ToString("dd-MM-yyyy");  //The start date of the position
+                string end;                                   //The end date of the position
+                string title = ToTitle(Level);                //The title of the position
 
                 if (DateTime.Compare(End, DateTime.Today) == 0)
                 {

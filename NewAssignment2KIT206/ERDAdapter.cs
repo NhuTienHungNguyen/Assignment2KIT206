@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows; //for generating a MessageBox upon encountering an error
+using System.Windows;
 using System.Diagnostics;
 
 
@@ -32,7 +32,7 @@ namespace NewAssignment2KIT206
 
             private static MySqlConnection conn = null;
 
-            //Part of step 2.3.3 in Week 8 tutorial. This method is a gift to you because .NET's approach to converting strings to enums is so horribly broken
+            //This method to converting strings to enums is so horribly broken
             public static T ParseEnum<T>(string value)
             {
                 return (T)Enum.Parse(typeof(T), value);
@@ -52,10 +52,10 @@ namespace NewAssignment2KIT206
                 return conn;
             }
 
-            //For step 2.2 in Week 8 tutorial
+            //Load researchers for controller
             public static List<Researcher> LoadAll()
             {
-                List<Researcher> staff = new List<Researcher>();
+                List<Researcher> researchers = new List<Researcher>();    //Researchers list to be loaded in
 
                 MySqlConnection conn = GetConnection();
                 MySqlDataReader rdr = null;
@@ -107,9 +107,8 @@ namespace NewAssignment2KIT206
 
                         validPhoto = databasePhoto.Substring(0, checkPosition);
 
-                        //Note that in your assignment you will need to inspect the *type* of the
-                        //employee/researcher before deciding which kind of concrete class to create.
-                        staff.Add(new Researcher
+
+                        researchers.Add(new Researcher
                         {
                             ID = rdr.GetInt32(0),
                             Type = rdr.GetString(1),
@@ -125,10 +124,6 @@ namespace NewAssignment2KIT206
                             SupervisorID = supervisorid,
                             Degree = degree
                         });
-
-                        /*Debug.WriteLine("@@@@@@@@@@@@@@@");
-                        Debug.WriteLine(staff[0].Photo);
-                        Debug.WriteLine("@@@@@@@@@@@@@@@");*/
                     }
                 }
                 catch (MySqlException e)
@@ -147,10 +142,9 @@ namespace NewAssignment2KIT206
                     }
                 }
 
-                return staff;
+                return researchers;
             }
 
-            //For step 2.3 in Week 8 tutorial
             public static ObservableCollection<Publication> LoadPublications(int id)
             {
                 ObservableCollection<Publication> orderedWork = new ObservableCollection<Publication>();

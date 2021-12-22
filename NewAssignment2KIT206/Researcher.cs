@@ -16,24 +16,24 @@ namespace NewAssignment2KIT206
         /// </summary>
         public class Researcher
         {
-            public int ID { get; set; }
-            public string Type { get; set; }
-            public string GivenName { get; set; }
-            public string FamilyName { get; set; }
-            public string FullName { get; set; }
-            public string Title { get; set; }
-            public string Unit { get; set; }
-            public string Campus { get; set; }
-            public string Email { get; set; }
-            public String Photo { get; set; }
-            public string Degree { get; set; }
-            public string SupervisorID { get; set; }
-            public EmploymentLevel Level { get; set; }
-            public List<Position> Positions { get; set; }
-            public List<Researcher> Supervision { get; set; }
-            public ObservableCollection<Publication> Publications { get; set; }
+            public int ID { get; set; }                                             //Researcher ID
+            public string Type { get; set; }                                        //Researcher Type (Staff or Student)
+            public string GivenName { get; set; }                                   //Researcher Given name
+            public string FamilyName { get; set; }                                  //Researcher Family name
+            public string FullName { get; set; }                                    //Researcher Full name
+            public string Title { get; set; }                                       //Researcher Title
+            public string Unit { get; set; }                                        //Researcher working unit
+            public string Campus { get; set; }                                      //Researcher working campus base
+            public string Email { get; set; }                                       //Researcher email
+            public string Photo { get; set; }                                       //Researcher Photo (URL Type)
+            public string Degree { get; set; }                                      //User degree (If available)
+            public string SupervisorID { get; set; }                                //Supervisor ID of researcher (If available)
+            public EmploymentLevel Level { get; set; }                              //Level of researcher
+            public List<Position> Positions { get; set; }                           //Past and current positions of researcher
+            public List<Researcher> Supervision { get; set; }                       //Supervision list of researcher (If available)     
+            public ObservableCollection<Publication> Publications { get; set; }     //Publications list of researcher
 
-            public string GetCurrentJob
+            public string GetCurrentJob                                             //Current job of researcher
             {
                 get
                 {
@@ -45,7 +45,7 @@ namespace NewAssignment2KIT206
                 }
             }
 
-            public DateTime CurrentJobStart
+            public DateTime CurrentJobStart                                         //Date of current position of researcher
             {
                 get
                 {
@@ -57,7 +57,7 @@ namespace NewAssignment2KIT206
                 }
             }
 
-            public DateTime EarliestJobStart
+            public DateTime EarliestJobStart                                        //Commence date of researcher with the Institution
             {
                 get
                 {
@@ -69,7 +69,7 @@ namespace NewAssignment2KIT206
                 }
             }
 
-            public List<Position> EarlierJobs
+            public List<Position> EarlierJobs                                       //List of earlier jobs of researcher (If available)
             {
                 get
                 {
@@ -86,7 +86,7 @@ namespace NewAssignment2KIT206
                 }
             }
 
-            public double Tenure
+            public double Tenure                                                    //Tenure of researcher
             {
                 get
                 {
@@ -96,12 +96,12 @@ namespace NewAssignment2KIT206
                 }
             }
 
-            public int PublicationCount
+            public int PublicationCount                                              //Researcher publication count
             {
                 get { return Publications == null ? 0 : Publications.Count(); }
             }
 
-            public double threeYearAverage
+            public double threeYearAverage                                          //Three year average of publications for reseacher
             {
                 get
                 {
@@ -119,7 +119,7 @@ namespace NewAssignment2KIT206
                 }
             }
 
-            public double getPerformance
+            public double getPerformance                                              //Performance of researcher (staff)
             {
                 get
                 {
@@ -156,7 +156,7 @@ namespace NewAssignment2KIT206
                 }
             }
 
-            public int SupervisionCount
+            public int SupervisionCount                                                 //Researcher supervisions count (staff)
             {
                 get
                 {
@@ -164,7 +164,7 @@ namespace NewAssignment2KIT206
                 }
             }
 
-            public List<string> displayCommulativePublicationCount
+            public List<string> displayCommulativePublicationCount                      //Cummulative publication count for researcher
             {
                 get
                 {
@@ -188,7 +188,7 @@ namespace NewAssignment2KIT206
                 }
             }
 
-            public List<string> orderingItems
+            public List<string> orderingItems                                           //Ordering items for publication list
             {
                 get
                 {
@@ -201,9 +201,8 @@ namespace NewAssignment2KIT206
                 }
             }
 
-            public override string ToString()
+            public override string ToString()                                            //To string method for researcher
             {
-                //For the purposes of this week's demonstration this returns only the name
                 return FamilyName + ", " + GivenName + " (" + Title + ")";
             }
         }

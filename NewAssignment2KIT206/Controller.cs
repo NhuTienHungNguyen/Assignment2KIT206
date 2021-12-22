@@ -16,9 +16,6 @@ namespace NewAssignment2KIT206
 
         public class Controller
         {
-            //The example shown here follows the pattern discussed in the Module 6 summary slides,
-            //maintaining two collections, a master and a 'viewable' one (which is the 'view model'
-            //in Microsoft's Model-View-ViewModel approach to Model-View-Controller)
             private List<Researcher> researchers;
             public List<Researcher> allResearchers { get { return researchers; } set { } }
 
@@ -28,7 +25,7 @@ namespace NewAssignment2KIT206
             public Controller()
             {
                 researchers = ERDAdapter.LoadAll();
-                viewableResearchers = new ObservableCollection<Researcher>(researchers); //this list we will modify later
+                viewableResearchers = new ObservableCollection<Researcher>(researchers);
 
                 foreach (Researcher e in researchers)
                 {
@@ -49,7 +46,7 @@ namespace NewAssignment2KIT206
                                where level == EmploymentLevel.Any || e.Level == level
                                select e;
                 viewableResearchers.Clear();
-                //Converts the result of the LINQ expression to a List and then calls viewableStaff.Add with each element of that list in turn
+
                 selected.ToList().ForEach(viewableResearchers.Add);
             }
 
