@@ -41,6 +41,7 @@
                 <Label Content="Email:"/>
                 <Label Content="{Binding Email}"/>
             </StackPanel>
+            <Label Content="Publications list:" Margin="18,0,0,0"/>
             <StackPanel Orientation="Horizontal" Margin="350,-120,0,0" Width="90">
                 <Image Height="141" Margin="0,0,0,0" Source="{Binding Path=Photo}"/>
             </StackPanel>
@@ -94,7 +95,6 @@
                 <Label Content="Degree:"/>
                 <Label Content="{Binding Degree}"/>
             </StackPanel>
-            <Label Content="Publications list:" Margin="18,0,0,0"/>
             <Label Content="Order List: " Margin="18,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
             <ComboBox x:Name="Ordering" Margin="18,0,0,0" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" ItemsSource="{Binding orderingItems}" SelectionChanged="Ordering_SelectionChanged"  />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Width="250" Margin="200,-45,0,0">
@@ -108,67 +108,74 @@
         <StackPanel x:Name="ReportPanel" Orientation="Vertical" Grid.Column="3" Height="651" VerticalAlignment="Top" Margin="0,0,1,0">
             <Expander x:Name="ShowReport" Margin="20,0,13,0" Header="Show Researcher Report" ExpandDirection="Down">
                 <StackPanel>
-
-                    <Label Content="Star Performers" Margin="20,0,0,0" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                    <DataGrid x:Name="StarPerformers"
+                    <StackPanel  Height="150" VerticalAlignment="Top" Margin="0,0,1,0">
+                        <Label Content="Star Performers" Margin="20,0,0,0" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Button x:Name="StarPerformerEmails" Content="Get Emails" Width="80" Height="20" Margin="20, -23, 0, 0" HorizontalAlignment="Right" VerticalAlignment="Top" Click="StarPerformerEmails_Click" />
+                        <DataGrid x:Name="StarPerformers"
                       AutoGenerateColumns="False"
                       IsReadOnly="True" Margin="35,0,55,0" ItemsSource="{Binding Source={StaticResource starPerformerList}}"
                       >
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Performance"
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Performance"
                                         Width="100"
                                         Binding="{Binding Path=getPerformance}"/>
-                            <DataGridTextColumn Header="Full name"
+                                <DataGridTextColumn Header="Full name"
                                         Width="250"
                                         Binding="{Binding Path=FullName}"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                    <Button x:Name="StarPerformerEmails" Content="Get Emails" Width="80" Height="20" Margin="0, -85, 10, 0" HorizontalAlignment="Right" VerticalAlignment="Top" Click="StarPerformerEmails_Click" />
-                    <Label Content="Meeting Minimum" Margin="20,0,0,0" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <DataGrid x:Name="MeetMinimum"
-                      AutoGenerateColumns="False"
-                      IsReadOnly="True" Margin="35,0,55,0" ItemsSource="{Binding Source={StaticResource meetMinimumList}}"
-                      >
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Performance"
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                    <StackPanel Height="150" VerticalAlignment="Top" Margin="0,0,1,0">
+                        <Label Content="Meeting Minimum" Margin="20,0,0,0" Width="126" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        <Button x:Name="MeetMinimumEmails" Content="Get Emails" Width="80" Height="20" Margin="20, -23, 0, 0" HorizontalAlignment="Right" VerticalAlignment="Top" Click="MeetMinimumEmails_Click" />
+                        <DataGrid x:Name="MeetMinimum"
+                        AutoGenerateColumns="False"
+                         IsReadOnly="True" Margin="35,0,55,0" ItemsSource="{Binding Source={StaticResource meetMinimumList}}"
+                        >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Performance"
                                         Width="100"
-                                        Binding="{Binding Path=getPerformance}"/>
-                            <DataGridTextColumn Header="Full name"
+                                        Binding="{Binding getPerformance}"/>
+                                <DataGridTextColumn Header="Full name"
                                         Width="250"
-                                        Binding="{Binding Path=FullName}"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                    <Button x:Name="MeetMinimumEmails" Content="Get Emails" Width="80" Height="20" Margin="0, -85, 10, 0" HorizontalAlignment="Right" VerticalAlignment="Top" Click="MeetMinimumEmails_Click" />
-                    <Label Content="Below Expectations" Margin="20,0,0,0" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <DataGrid x:Name="BelowExp"
+                                        Binding="{Binding FullName}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                    <StackPanel Height="150" VerticalAlignment="Top" Margin="0,0,1,0">
+                        <Label Content="Below Expectations" Margin="20,0,0,0" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        <Button x:Name="BelowExpEmails" Content="Get Emails" Width="80" Height="20" Margin="20, -23, 0, 0" HorizontalAlignment="Right" VerticalAlignment="Top" Click="BelowExpEmails_Click" />
+                        <DataGrid x:Name="BelowExp"
                       AutoGenerateColumns="False"
                       IsReadOnly="True" Margin="35,0,55,0" ItemsSource="{Binding Source={StaticResource belowExpList}}"
                       >
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Performance"
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Performance"
                                         Width="100"
                                         Binding="{Binding Path=getPerformance}"/>
-                            <DataGridTextColumn Header="Full name"
+                                <DataGridTextColumn Header="Full name"
                                         Width="250"
                                         Binding="{Binding Path=FullName}"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                    <Button x:Name="BelowExpEmails" Content="Get Emails" Width="80" Height="20" Margin="0, -103, 10, 0" HorizontalAlignment="Right" VerticalAlignment="Top" Click="BelowExpEmails_Click" />
-                    <Label Content="Poor" Margin="20,0,0,0" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                    <DataGrid x:Name="Poor"
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                    <StackPanel Height="150" VerticalAlignment="Top" Margin="0,0,1,0">
+                        <Label Content="Poor" Margin="20,0,0,0" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <Button x:Name="PoorResearcherEmails" Content="Get Emails" Width="80" Height="20" Margin="20, -23, 0, 0" HorizontalAlignment="Right" VerticalAlignment="Top" Click="PoorResearcherEmails_Click" />
+                        <DataGrid x:Name="Poor"
                       AutoGenerateColumns="False"
                       IsReadOnly="True" Margin="35,0,55,0" ItemsSource="{Binding Source={StaticResource poorResearcherList}}"
                       >
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Performance"
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Performance"
                                         Width="100"
                                         Binding="{Binding Path=getPerformance}"/>
-                            <DataGridTextColumn Header="Full name"
+                                <DataGridTextColumn Header="Full name"
                                         Width="250"
                                         Binding="{Binding Path=FullName}"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                    <Button x:Name="PoorResearcherEmails" Content="Get Emails" Width="80" Height="20" Margin="0, -103, 10, 0" HorizontalAlignment="Right" VerticalAlignment="Top" Click="PoorResearcherEmails_Click" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
                 </StackPanel>
             </Expander>
         </StackPanel>
