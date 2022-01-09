@@ -11,6 +11,26 @@
                             MethodName="GetViewableList">
         </ObjectDataProvider>
 
+        <ObjectDataProvider x:Key="starPerformerList"
+                            ObjectInstance="{StaticResource controller}"
+                            MethodName="GetStarPerformanceResearcher">
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="meetMinimumList"
+                            ObjectInstance="{StaticResource controller}"
+                            MethodName="GetMeetMinimumResearcher">
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="belowExpList"
+                            ObjectInstance="{StaticResource controller}"
+                            MethodName="GetBelowExpResearcher">
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="poorResearcherList"
+                            ObjectInstance="{StaticResource controller}"
+                            MethodName="GetPoorResearcher">
+        </ObjectDataProvider>
+
         <ObjectDataProvider x:Key="positionValues"
                             ObjectType="{x:Type sys:Enum}"
                             MethodName="GetValues">

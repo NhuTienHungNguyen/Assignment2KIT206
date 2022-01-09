@@ -115,64 +115,56 @@ namespace NewAssignment2KIT206
             }
         }
 
-        private void StarPerformers_Loaded(object sender, RoutedEventArgs e)
+        private void StarPerformerEmails_Click(object sender, RoutedEventArgs e)
         {
-            ObservableCollection<Researcher> newList = new ObservableCollection<Researcher>();
+            MessageBox.Show("Email(s) copied!");
+            string copiedEmail = "";
 
-            foreach (Researcher r in researcherList.Items)
+            foreach (Researcher r in StarPerformers.Items)
             {
-                if (r.getPerformance >= 200.0)
-                {
-                    newList.Add(r);
-                }
+                copiedEmail += (r.Email + " ");
             }
 
-            StarPerformers.ItemsSource = newList;
+            Clipboard.SetText(copiedEmail);
         }
 
-        private void MeetMinimum_Loaded(object sender, RoutedEventArgs e)
+        private void MeetMinimumEmails_Click(object sender, RoutedEventArgs e)
         {
-            ObservableCollection<Researcher> newList = new ObservableCollection<Researcher>();
+            MessageBox.Show("Email(s) copied!");
+            string copiedEmail = "";
 
-            foreach (Researcher r in researcherList.Items)
+            foreach (Researcher r in MeetMinimum.Items)
             {
-                if (r.getPerformance >= 110.0 && r.getPerformance < 200.0)
-                {
-                    newList.Add(r);
-                }
+                copiedEmail += (r.Email + " ");
             }
 
-            MeetMinimum.ItemsSource = newList;
+            Clipboard.SetText(copiedEmail);
         }
 
-        private void BelowExp_Loaded(object sender, RoutedEventArgs e)
+        private void PoorResearcherEmails_Click(object sender, RoutedEventArgs e)
         {
-            ObservableCollection<Researcher> newList = new ObservableCollection<Researcher>();
+            MessageBox.Show("Email(s) copied!");
+            string copiedEmail = "";
 
-            foreach (Researcher r in researcherList.Items)
+            foreach (Researcher r in Poor.Items)
             {
-                if (r.getPerformance >= 70.0 && r.getPerformance < 110.0)
-                {
-                    newList.Add(r);
-                }
+                copiedEmail += (r.Email + " ");
             }
 
-            BelowExp.ItemsSource = newList;
+            Clipboard.SetText(copiedEmail);
         }
 
-        private void Poor_Loaded(object sender, RoutedEventArgs e)
+        private void BelowExpEmails_Click(object sender, RoutedEventArgs e)
         {
-            ObservableCollection<Researcher> newList = new ObservableCollection<Researcher>();
+            MessageBox.Show("Email(s) copied!");
+            string copiedEmail = "";
 
-            foreach (Researcher r in researcherList.Items)
+            foreach (Researcher r in BelowExp.Items)
             {
-                if (r.Type == "Staff" && r.getPerformance < 70.0)
-                {
-                    newList.Add(r);
-                }
+                copiedEmail += (r.Email + " ");
             }
 
-            Poor.ItemsSource = newList;
+            Clipboard.SetText(copiedEmail);
         }
     }
 }

@@ -63,8 +63,6 @@ namespace NewAssignment2KIT206
                 string degree;
                 string supervisorid;
                 EmploymentLevel level;
-                string databasePhoto;
-                string validPhoto = "";
 
                 try
                 {
@@ -75,8 +73,6 @@ namespace NewAssignment2KIT206
 
                     while (rdr.Read())
                     {
-                        bool checkValid = false;
-                        int checkPosition = 0;
 
                         if (rdr.GetString(1) == "Staff")
                         {
@@ -91,23 +87,6 @@ namespace NewAssignment2KIT206
                             level = ParseEnum<EmploymentLevel>(rdr.GetString(1));
                         }
 
-                        databasePhoto = rdr.GetString(8);
-
-                        while (checkValid != true)
-                        {
-                            if (databasePhoto[checkPosition] == '?')
-                            {
-                                checkValid = true;
-                            }
-                            else
-                            {
-                                checkPosition++;
-                            }
-                        }
-
-                        validPhoto = databasePhoto.Substring(0, checkPosition);
-
-
                         researchers.Add(new Researcher
                         {
                             ID = rdr.GetInt32(0),
@@ -119,7 +98,7 @@ namespace NewAssignment2KIT206
                             Unit = rdr.GetString(5),
                             Campus = rdr.GetString(6),
                             Email = rdr.GetString(7),
-                            Photo = validPhoto,
+                            Photo = rdr.GetString(8),
                             Level = level,
                             SupervisorID = supervisorid,
                             Degree = degree

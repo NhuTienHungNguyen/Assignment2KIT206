@@ -40,6 +40,74 @@ namespace NewAssignment2KIT206
                 return VisibleResearchersList;
             }
 
+            public ObservableCollection<Researcher> GetStarPerformanceResearcher()
+            {
+                ObservableCollection<Researcher> newList = new ObservableCollection<Researcher>();
+
+                var OrderedList = from Researcher r in VisibleResearchersList
+                                  where r.getPerformance >= 200.0
+                                  orderby r.getPerformance descending
+                                  select r;
+
+                foreach (Researcher r in OrderedList)
+                {
+                    newList.Add(r);
+                }
+
+                return newList;
+            }
+
+            public ObservableCollection<Researcher> GetMeetMinimumResearcher()
+            {
+                ObservableCollection<Researcher> newList = new ObservableCollection<Researcher>();
+
+                var OrderedList = from Researcher r in VisibleResearchersList
+                                  where r.getPerformance >= 110.0 && r.getPerformance < 200.0
+                                  orderby r.getPerformance descending
+                                  select r;
+
+                foreach (Researcher r in OrderedList)
+                {
+                    newList.Add(r);
+                }
+
+                return newList;
+            }
+
+            public ObservableCollection<Researcher> GetBelowExpResearcher()
+            {
+                ObservableCollection<Researcher> newList = new ObservableCollection<Researcher>();
+
+                var OrderedList = from Researcher r in VisibleResearchersList
+                                  where r.getPerformance >= 70.0 && r.getPerformance < 110.0
+                                  orderby r.getPerformance ascending
+                                  select r;
+
+                foreach (Researcher r in OrderedList)
+                {
+                    newList.Add(r);
+                }
+
+                return newList;
+            }
+
+            public ObservableCollection<Researcher> GetPoorResearcher()
+            {
+                ObservableCollection<Researcher> newList = new ObservableCollection<Researcher>();
+
+                var OrderedList = from Researcher r in VisibleResearchersList
+                                  where r.Type == "Staff" && r.getPerformance < 70.0
+                                  orderby r.getPerformance ascending
+                                  select r;
+
+                foreach (Researcher r in OrderedList)
+                {
+                    newList.Add(r);
+                }
+
+                return newList;
+            }
+
             public void Filter(EmploymentLevel level)
             {
                 var selected = from Researcher e in researchers
